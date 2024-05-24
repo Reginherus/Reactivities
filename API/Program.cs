@@ -11,7 +11,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(opt =>
 {
-    opt.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
+    opt.UseSqlite(builder.Configuration.GetConnectionString("Default"));
+    //opt.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
 });
 
 var app = builder.Build();
@@ -21,8 +22,6 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-
-    
 
 }
 
